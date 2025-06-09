@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+$name=$_SESSION['name']??null;
+$alerts=$_SESSION['alerts']??[];
+$active_form=$_SESSION['active_form']?? '';
+
+session_unset();
+
+if($name !==null) $_SESSION['name'] =$name;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,28 +32,35 @@
         </nav>
 
         <div class="user-auth">
-            <div class="profile-box" style="display: none;">
-                <div class="avatar-circle">C</div>
+            <?php if(!empty($name)):?>
+            <div class="profile-box">
+                <div class="avatar-circle"><?php echo substr($name, 0, 1); ?></div>
                 <div class="dropdown">
                     <a href="#">My Account</a>
-                    <a href="#">Logout</a>
+                    <a href="logout.php">Logout</a>
                 </div>
             </div>
+            <?php else: ?>
             <button type="button" class="login-btn-modal"">Login</button>
+            <?php endif; ?>
         </div>
     </header>
     <section>
-        <h1>Hey Developer!</h1>
+        <h1>Hey <?=$name?? 'Developer'?></h1>
     </section>
 
-    <div class="alert-box" style="display: none;">
-        <div class="alert success">
-            <i class='bx  bx-check-circle'></i> 
-            <span class="message">Registration successful!</span>
+    <?php if(!empty($alerts)):?>
+    <div class="alert-box">
+        <?php foreach($alerts as $alert):?>
+        <div class="alert <?php echo $alert['type']; ?>">
+            <i class='bx <?=$alert['type'] === 'success' ? 'bxs-check-circle' : 'bxs-error-circle' ?></i> 
+            <span class="message"><?php echo $alert['message']; ?></span>
         </div>
+        <?php endforeach; ?>
     </div>
+    <?php endif; ?>
 
-    <div class="auth-modal">
+    <div class="auth-modal"  <?= $active_form === 'register' ? 'show slide' : ($active_form ==='login'? 'show' : '')?>>
         <button type="button" class="close-btn-modal"><i class='bx  bx-x'></i> </button>
         <div class="form-box login">
             <h2>Login</h2>

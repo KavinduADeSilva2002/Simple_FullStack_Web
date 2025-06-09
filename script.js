@@ -8,7 +8,7 @@ const avatarCircle = document.querySelector('.avatar-circle');
 const alertBox = document.querySelector('.alert-box');
 
 
-loginBtnModal.addEventListener('click', () => {
+if(loginBtnModal)loginBtnModal.addEventListener('click', () => {
     authModal.classList.add('show');
 });
 
@@ -24,15 +24,18 @@ loginLink.addEventListener('click', () => {
     authModal.classList.remove('slide');
 });
 
-avatarCircle.addEventListener('click', () => {
+if(avatarCircle)avatarCircle.addEventListener('click', () => {
     profileBox.classList.toggle('show');
 });
 
-setTimeout(()=> alertBox.classList.add('show'), 50);
+if (alertBox){
+    setTimeout(()=> alertBox.classList.add('show'), 50);
 
 setTimeout(() => {
     alertBox.classList.remove('show');
     setTimeout(() => {
         alertBox.remove();
-    }, 1000);
-}, 6000);
+        }, 1000);
+    }, 6000);
+}
+
