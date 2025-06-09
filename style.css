@@ -81,7 +81,13 @@ section h1{
     margin:auto;
     display:flex;
     align-items:center;
-    transition:height .2s ease;
+    overflow: hidden;
+    transform:scale(0);
+    transition:height .2s ease, transform .5s ease;
+}
+
+.auth-modal.show{
+    transform:scale(1);
 }
 
 .auth-modal.slide{
@@ -92,14 +98,29 @@ section h1{
     padding:40px;
 }
 
+.auth-modal .form-box.login,
+.auth-modal .form-box.register{
+    transform:translateX(0);
+    transition:transform .18s ease;
+}
+
 .auth-modal.slide .form-box.login{
     transform: translateX(-400px);
     transition: none;
 }
 
-.auth-modal .form-box.register{
-    position:absolute;
-    transform:translateX(400px);
+/* Fix the initial state of register form */
+.auth-modal .form-box.register {
+    position: absolute;
+    transform: translateX(400px);
+    opacity: 0;  /* Add this */
+    transition: transform .18s ease, opacity .18s ease;  /* Add opacity transition */
+}
+
+/* Add visibility when sliding */
+.auth-modal.slide .form-box.register {
+    opacity: 1;  /* Add this */
+    transform: translateX(0);
 }
 .form-box h2{
     font-size:35px;
@@ -176,4 +197,121 @@ input-box input::placeholder{
     color:#222;
     cursor:pointer;
     z-index: 1;
+}
+
+.profile-box .avatar-circle{
+    width:40px;
+    height:40px;
+    background:#fff;
+    border-radius:50%;
+    line-height:40px;
+    text-align:center;
+    font-size:25px;
+    color:#222;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.profile-box .dropdown{
+    position:absolute;
+    top:85px;
+    right:100px;
+    padding:10px;
+    background:#fff;
+    border-radius:8px;
+    display:flex;
+    flex-direction:column;
+    transform:translateY(20px);
+    opacity: 0;
+    pointer-events: none;
+    transition: .5s;
+}
+.profile-box.show .dropdown{
+    transform:translateY(0);
+    opacity:1;
+    pointer-events:auto;
+}
+
+.profile-box .dropdown a{
+    padding:6px 12px;
+    border-radius:4px;
+    color:#222;
+    text-decoration:none;
+    font-weight:500;
+    margin:2px 0;
+    transition: .2s;
+}
+
+.profile-box .dropdown a:hover{
+    background:#eee;
+}
+
+.alert-box{
+    position:fixed;
+    inset:0;
+    top:35px;
+    margin:0 auto;
+    width:350px;
+    height:70px;
+    background:#fff;
+    border-radius:6px;
+    padding:0 15px;
+    z-index:100;
+    overflow:hidden;
+    transform: translateY(-150%);  /* Changed from calc() */
+    opacity: 0;  /* Add opacity */
+    transition: transform 0.5s ease, opacity 0.3s ease;  /* Add opacity transition */
+}
+
+.alert-box.show{
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Add slide-out animation */
+.alert-box.hide {
+    transform: translateY(-150%);
+    opacity: 0;
+}
+
+.alert{
+    display: flex;
+    align-items:center;
+    height:100%;
+    color:#222;
+    font-weight:500;
+}
+
+.alert::after{
+    content:'';
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:3px;
+    background:#0abf30;
+    animation: progress 6s linear forwards;
+}
+
+.alert.error::after{
+    background:#f00;
+}
+
+@keyframes progress{
+    0% {
+        width: 100%;
+    }
+    100%{
+        width:0;
+    }
+}
+
+.alert i{
+    font-size:35px;
+    color:#0abf30;
+    margin-right:8px;
+}
+
+.alert.error i{
+    color:#f00;
 }

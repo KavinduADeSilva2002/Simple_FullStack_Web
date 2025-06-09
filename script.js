@@ -3,13 +3,17 @@ const loginBtnModal = document.querySelector('.login-btn-modal');
 const loginLink = document.querySelector('.login-link');
 const registerLink = document.querySelector('.register-link');
 const closeBtnModal = document.querySelector('.close-btn-modal');
+const profileBox = document.querySelector('.profile-box');
+const avatarCircle = document.querySelector('.avatar-circle');
+const alertBox = document.querySelector('.alert-box');
+
 
 loginBtnModal.addEventListener('click', () => {
-    authModal.style.display = 'flex';
+    authModal.classList.add('show');
 });
 
 closeBtnModal.addEventListener('click', () => {
-    authModal.style.display = 'none';
+    authModal.classList.remove('show', 'slide');
 });
 
 registerLink.addEventListener('click', () => {
@@ -19,3 +23,16 @@ registerLink.addEventListener('click', () => {
 loginLink.addEventListener('click', () => {
     authModal.classList.remove('slide');
 });
+
+avatarCircle.addEventListener('click', () => {
+    profileBox.classList.toggle('show');
+});
+
+setTimeout(()=> alertBox.classList.add('show'), 50);
+
+setTimeout(() => {
+    alertBox.classList.remove('show');
+    setTimeout(() => {
+        alertBox.remove();
+    }, 1000);
+}, 6000);
