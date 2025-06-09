@@ -20,12 +20,26 @@
         </nav>
 
         <div class="user-auth">
-            <button type="button" class="login-btn-modal">Login</button>
+            <div class="profile-box" style="display: none;">
+                <div class="avatar-circle">C</div>
+                <div class="dropdown">
+                    <a href="#">My Account</a>
+                    <a href="#">Logout</a>
+                </div>
+            </div>
+            <button type="button" class="login-btn-modal"">Login</button>
         </div>
     </header>
     <section>
         <h1>Hey Developer!</h1>
     </section>
+
+    <div class="alert-box" style="display: none;">
+        <div class="alert success">
+            <i class='bx  bx-check-circle'></i> 
+            <span class="message">Registration successful!</span>
+        </div>
+    </div>
 
     <div class="auth-modal">
         <button type="button" class="close-btn-modal"><i class='bx  bx-x'></i> </button>
@@ -40,7 +54,7 @@
                     <input type="password" name="password" placeholder="Password" required>
                     <i class='bx bxs-lock'></i>
                 </div>
-                <button type="submit" name="login_btn" class="btn">Login"></button>
+                <button type="submit" name="login_btn" class="btn">Login</button>
                 <p>Don't have an account? <a href="#" class="register-link">Register</a></p>
             </form>
         </div>
@@ -60,14 +74,14 @@
                     <input type="password" name="password" placeholder="Password" required>
                     <i class='bx bxs-lock'></i>
                 </div>
-                <button type="submit" name="register_btn" class="btn">Register"></button>
+                <button type="submit" name="register_btn" class="btn">Register</button>
                 <p>Already have an account? <a href="#" class="login-link">Login</a></p>
             </form>
         </div>
 
     </div>
     <script src="script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/dist/boxicons.js"></script>
+    
 
 </body>
 
