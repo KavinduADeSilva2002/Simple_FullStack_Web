@@ -81,10 +81,25 @@ section h1{
     margin:auto;
     display:flex;
     align-items:center;
+    transition:height .2s ease;
+}
+
+.auth-modal.slide{
+    height:520px;
 }
 .auth-modal .form-box{
     width:100%;
     padding:40px;
+}
+
+.auth-modal.slide .form-box.login{
+    transform: translateX(-400px);
+    transition: none;
+}
+
+.auth-modal .form-box.register{
+    position:absolute;
+    transform:translateX(400px);
 }
 .form-box h2{
     font-size:35px;
@@ -119,4 +134,46 @@ input-box input::placeholder{
     top:50%;
     transform:translateY(-50%);
     font-size:20px;
+}
+
+.btn{
+    width:100%;
+    height:45px;
+    background:#fff;
+    border-radius:40px;
+    border:none;
+    box-shadow:0 0 10px rdba(0,0,0, .1);
+    font-size:16px;
+    color:#222;
+    font-weight:500;
+    cursor:pointer;
+}
+.form-box form p {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.form-box p a{
+    color:#fff;
+    text-decoration:none;
+    font-weight:600;
+    margin-left: 5px;
+}
+
+.form-box p a:hover{
+    text-decoration:underline;
+}
+.auth-modal .close-btn-modal{
+    position:absolute;
+    top:0;
+    right:0;
+    width:45px;
+    height:45px;
+    background:#fff;
+    border:none;
+    border-bottom-left-radius:20px;
+    font-size:35px;
+    color:#222;
+    cursor:pointer;
+    z-index: 1;
 }
