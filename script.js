@@ -28,14 +28,19 @@ if(avatarCircle)avatarCircle.addEventListener('click', () => {
     profileBox.classList.toggle('show');
 });
 
-if (alertBox){
-    setTimeout(()=> alertBox.classList.add('show'), 50);
+if (alertBox) {
+    // Force a reflow to ensure animation works
+    alertBox.offsetHeight;
+    
+    // Show alert
+    requestAnimationFrame(() => {
+        alertBox.classList.add('show');
+    });
 
-setTimeout(() => {
-    alertBox.classList.remove('show');
+    // Hide alert after 6 seconds
     setTimeout(() => {
-        alertBox.remove();
-        }, 1000);
+        alertBox.classList.remove('show');
+        setTimeout(() => alertBox.remove(), 300);
     }, 6000);
 }
 

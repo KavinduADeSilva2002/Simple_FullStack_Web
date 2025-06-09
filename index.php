@@ -49,12 +49,12 @@ if($name !==null) $_SESSION['name'] =$name;
         <h1>Hey <?=$name?? 'Developer'?></h1>
     </section>
 
-    <?php if(!empty($alerts)):?>
+    <?php if(!empty($alerts)): ?>
     <div class="alert-box">
-        <?php foreach($alerts as $alert):?>
+        <?php foreach($alerts as $alert): ?>
         <div class="alert <?php echo $alert['type']; ?>">
-            <i class='bx <?=$alert['type'] === 'success' ? 'bxs-check-circle' : 'bxs-error-circle' ?></i> 
-            <span class="message"><?php echo $alert['message']; ?></span>
+            <i class='bx <?php echo $alert['type'] === 'success' ? 'bxs-check-circle' : 'bxs-error-circle'; ?>'></i>
+            <span class="message"><?php echo htmlspecialchars($alert['message']); ?></span>
         </div>
         <?php endforeach; ?>
     </div>

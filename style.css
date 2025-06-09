@@ -247,25 +247,21 @@ input-box input::placeholder{
 }
 
 .alert-box{
-    position:fixed;
-    inset:0;
-    top:35px;
-    margin:0 auto;
-    width:350px;
-    height:70px;
-    background:#fff;
-    border-radius:6px;
-    padding:0 15px;
-    z-index:100;
-    overflow:hidden;
-    transform: translateY(-150%);  /* Changed from calc() */
-    opacity: 0;  /* Add opacity */
-    transition: transform 0.5s ease, opacity 0.3s ease;  /* Add opacity transition */
+    position: fixed;
+    top: 35px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-150%);
+    width: 350px;
+    height: 70px;
+    background: #fff;
+    border-radius: 6px;
+    padding: 0 15px;
+    z-index: 9999;
+    transition: transform 0.3s ease;
 }
 
 .alert-box.show{
-    transform: translateY(0);
-    opacity: 1;
+    transform: translateX(-50%) translateY(0);
 }
 
 /* Add slide-out animation */
