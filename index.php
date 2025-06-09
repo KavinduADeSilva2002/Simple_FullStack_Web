@@ -45,7 +45,7 @@
         <button type="button" class="close-btn-modal"><i class='bx  bx-x'></i> </button>
         <div class="form-box login">
             <h2>Login</h2>
-            <form action="">
+            <form action="auth_process.php" method="POST">
                 <div class="input-box">
                     <input type="email" name="email" placeholder="Email" required>
                     <i class='bx bxs-envelope'></i>
@@ -61,7 +61,7 @@
 
         <div class="form-box register">
             <h2>Register</h2>
-            <form action="">
+            <form action="auth_process.php" method="POST">
                 <div class="input-box">
                     <input type="text" name="name" placeholder="Name" required>
                     <i class='bx bxs-user'></i>
